@@ -2,9 +2,18 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php wp_title( ' | ', true, 'right' ); ?></title>
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
+
+<!-- Bootstrap -->
+<link href="<?php echo get_template_directory_uri() . '/includes/bootstrap-3.2.0-dist/css/bootstrap.min.css'; ?>" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<?php echo get_template_directory_uri() . '/includes/bootstrap-3.2.0-dist/js/bootstrap.min.js'; ?>"></script>
+
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
