@@ -2,7 +2,7 @@
 Theme Name: Fundamental
 Theme URI: Them url here
 Author: Jack Roe
-Author URI: http://jackroeweb.com;
+Author URI: http://jackroeweb.com
 Description: <strong>UPDATE</strong> - My Description Here
 Version: 1.0
 License: GNU General Public License
@@ -16,3 +16,54 @@ Fundamental WordPress Theme
 /*Theme CSS Reset*/
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{font-size:100%;font:inherit;padding:0;border:0;margin:0;vertical-align:baseline}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}.clear{clear:both}
 .sticky{}.bypostauthor{}.wp-caption{}.wp-caption-text{}.gallery-caption{}.alignright{}.alignleft{}.aligncenter{}
+
+/*Header Area*/
+#branding {
+	background: #2c539e; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #2c539e 0%, #2c539e 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2c539e), color-stop(100%,#2c539e)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover, #2c539e 0%,#2c539e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover, #2c539e 0%,#2c539e 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover, #2c539e 0%,#2c539e 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center, #2c539e 0%,#2c539e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c539e', endColorstr='#2c539e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	height: 100px;
+}
+
+#branding h1 {
+	/*Position centered verically*/
+	margin-top: 0px;
+	position: relative;
+	top: 50%;
+	transform: translateY(50%);
+}
+
+#branding #site-description {
+	/*Position centered verically*/
+	margin-top: 0px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-90%);
+	margin-left: 3%;
+}
+
+#branding #site-title {
+	margin-left: 1%;
+}
+
+#branding #site-title, #branding #site-description {
+	float: left;
+}
+
+/*Main Menu*/
+#menu li {
+	display: inline-block;
+	line-height: 48px;
+	height: 48px;
+	padding: 0px 1%;
+}
+
+#menu {
+	background-color: black;
+	height: 48px;
+}
