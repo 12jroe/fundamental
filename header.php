@@ -18,21 +18,22 @@
 </head>
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
-		<header id="header" role="banner">
-			<section id="branding">
-				<div id="site-title"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'fundamental' ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></h1></div>
-				<div id="site-description"><?php bloginfo( 'description' ); ?></div>
-			</section>
-			<nav id="menu" role="navigation" class="navbar navbar-default">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu_list">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="main_menu_list">
-					<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
-				</div>
-			</nav>
-		</header>
-		<div id="container" class="container-fluid">
+		<div id = "main_area_and_top">
+			<header id="header" role="banner">
+				<section id="branding">
+					<div id="site-title"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'fundamental' ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></h1></div>
+					<div id="site-description"><?php bloginfo( 'description' ); ?></div>
+				</section>
+				<nav id="menu" role="navigation" class="navbar navbar-default">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu_list">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="main_menu_list">
+						<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+					</div>
+				</nav>
+			</header>
+			<div id="container" class="container-fluid">
