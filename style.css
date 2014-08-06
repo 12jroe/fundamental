@@ -66,3 +66,42 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 #menu {
 	height: 48px;
 }
+
+/*Creates the 3 Column Layout*/
+#left-primary-sidebar {
+	float: left;
+	width: 15%;
+	margin: 0 5%;
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	padding: 1% 1%;
+
+}
+#content {
+	float: left;
+	width: 50%;
+}
+#right-primary-sidebar {
+	float: left;
+	width: 15%;
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	padding: 1% 1%;
+	margin: 0 5%;
+}
+
+.widget-title, .entry-title {
+	margin-top: 0px;
+}
+
+
+/*Widget Areas*/
+.widget-area > li {
+	list-style: none;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 10px;
+}
+.widget-area > li:last-child {
+	border-bottom: none;
+	margin-bottom: 0px;
+}

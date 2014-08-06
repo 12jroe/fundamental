@@ -38,8 +38,17 @@ add_action( 'widgets_init', 'fundamental_widgets_init' );
 function fundamental_widgets_init()
 {
 	register_sidebar( array (
-		'name' => __( 'Sidebar Widget Area', 'fundamental' ),
-		'id' => 'primary-widget-area',
+		'name' => __( 'Left Sidebar Widget Area', 'fundamental' ),
+		'id' => 'left-primary-widget-area',
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => "</li>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+		) );
+
+	register_sidebar( array (
+		'name' => __( 'Right Sidebar Widget Area', 'fundamental' ),
+		'id' => 'right-primary-widget-area',
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => "</li>",
 		'before_title' => '<h3 class="widget-title">',
@@ -65,3 +74,18 @@ function fundamental_comments_number( $count )
 	}
 }
 
+function get_left_sidebar() {
+	if ( is_active_sidebar( 'left-primary-widget-area' ) ) : ?>
+	<div id="left-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<?php dynamic_sidebar( 'left-primary-widget-area' ); ?>
+	</div><!-- #left-primary-sidebar -->
+<?php endif;
+}
+
+function get_right_sidebar(){
+	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : ?>
+	<div id="right-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<?php dynamic_sidebar( 'right-primary-widget-area' ); ?>
+	</div><!-- #right-primary-sidebar -->
+<?php endif; 
+}
