@@ -79,13 +79,21 @@ function get_left_sidebar() {
 	<div id="left-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
 		<?php dynamic_sidebar( 'left-primary-widget-area' ); ?>
 	</div><!-- #left-primary-sidebar -->
-<?php endif;
+	<?php endif;
 }
 
-function get_right_sidebar(){
+function get_right_sidebar() {
 	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : ?>
 	<div id="right-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
 		<?php dynamic_sidebar( 'right-primary-widget-area' ); ?>
 	</div><!-- #right-primary-sidebar -->
-<?php endif; 
+	<?php endif; 
+}
+
+function get_content_class() {
+	$sidebars = 0;
+	if ( is_active_sidebar( 'left-primary-widget-area' ) ) : $sidebars += 1; endif;
+	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : $sidebars += 1; endif;
+	/*Return Dynamically Created Class for #content (ie sides_1, sides_2, or sides_0*/
+	return "sides_" . $sidebars;
 }

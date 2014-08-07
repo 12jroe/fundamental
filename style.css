@@ -67,11 +67,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	height: 48px;
 }
 
-/*Creates the 3 Column Layout*/
+/*Creates the dynamic 1, 2, or 3 Column Layout*/
 #left-primary-sidebar {
 	float: left;
 	width: 15%;
-	margin: 0 5%;
+	margin: 0 0 0 5%;
 	border: 1px solid #e1e1e1;
 	border-radius: 5px;
 	padding: 1% 1%;
@@ -79,8 +79,28 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 #content {
 	float: left;
+	border: 1px solid #E1E1E1;
+	border-radius: 5px;
+	padding: 1%;
+}
+/*No Sidebars*/
+#content.sides_0 {
+	width: 80%;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+/*1 Sidebar*/
+#content.sides_1 {
+	width: 65%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+/*Both Sidebars*/
+#content.sides_2 {
 	width: 50%;
-	min-height: 100%; /*So that footer will always be at bottom of page*/
+	margin-left: 5%;
+	margin-right: 5%;
 }
 #right-primary-sidebar {
 	float: left;
@@ -88,7 +108,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	border: 1px solid #e1e1e1;
 	border-radius: 5px;
 	padding: 1% 1%;
-	margin: 0 5%;
+	margin: 0 5% 0 0;
 }
 
 .widget-title, .entry-title {
@@ -108,6 +128,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 /*Footer*/
+/**********************Makes Footer stick to bottom of screen, no matter how much content*********************************/
 html {
   position: relative;
   min-height: 100%;
@@ -123,4 +144,13 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #222222;
+}
+/*********************End Sticky Footer code****************************************************************************/
+#footer #copyright {
+	color: #E6E6E6;
+	text-align: center;
+	margin-top: 12px;
+}
+#footer {
+	padding: 10px;
 }
