@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php get_left_sidebar(); ?>
-<section id="content" role="main">
+<section id="content" role="main" class="<?php echo get_content_class(); ?>">
 <?php if ( have_posts() ) : ?>
 <header class="header">
 <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'fundamental' ), get_search_query() ); ?></h1>

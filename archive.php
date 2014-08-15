@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section id="content" role="main">
+<?php get_left_sidebar(); ?>
+<section id="content" role="main" class="<?php echo get_content_class(); ?>">
 <header class="header">
 <h1 class="entry-title"><?php 
 if ( is_day() ) { printf( __( 'Daily Archives: %s', 'fundamental' ), get_the_time( get_option( 'date_format' ) ) ); }
@@ -13,5 +14,5 @@ else { _e( 'Archives', 'fundamental' ); }
 <?php endwhile; endif; ?>
 <?php get_template_part( 'nav', 'below' ); ?>
 </section>
-<?php get_sidebar(); ?>
+<?php get_right_sidebar(); ?>
 <?php get_footer(); ?>

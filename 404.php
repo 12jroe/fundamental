@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section id="content" role="main">
+<?php get_left_sidebar(); ?>
+<section id="content" role="main" class="<?php echo get_content_class(); ?>">
 <article id="post-0" class="post not-found">
 <header class="header">
 <h1 class="entry-title"><?php _e( 'Not Found', 'fundamental' ); ?></h1>
@@ -10,5 +11,5 @@
 </section>
 </article>
 </section>
-<?php get_sidebar(); ?>
+<?php get_right_sidebar(); ?>
 <?php get_footer(); ?>
