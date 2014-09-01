@@ -98,3 +98,75 @@ function get_content_class() {
 	/*Return Dynamically Created Class for #content (ie sides_1, sides_2, or sides_0*/
 	return "sides_" . $sidebars . " col-md-" . $bootstrap_col_md . " col-xs-12";
 }
+
+/*Add settings page for theme settings*/
+/** Register function */
+add_action( 'admin_menu', 'my_settings_menu' );
+
+/** Add settings page */
+function my_settings_menu() {
+	$parent_slug = "themes.php";
+	$page_title = "Fundamental Settings";
+	$menu_title = "Fundamental Settings";
+	$capability = "manage_options";
+	$menu_slug = "fundamental-settings";
+	$function = "my_settings_options";
+	add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function);
+
+	//call register settings function
+	add_action( 'admin_init', 'register_mysettings' );
+}
+
+function register_mysettings() {
+	//register our settings
+	register_setting( 'myoption-group', 'header_background_color' );
+	register_setting( 'myoption-group', 'footer_background_color' );
+	register_setting( 'myoption-group', 'body_background_color' );
+}
+
+/** Display settings page */
+function my_settings_options() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	echo '<div class="wrap">';
+	echo '<h2>Fundamental Settings</h2>';
+	echo '<form method="post" action="options.php">';
+	settings_fields( 'myoption-group' );
+	do_settings_sections( 'myoption-group' );
+	?>
+	<table class="form-table">
+        <tr valign="top">
+        <th scope="row">Header Background Color (as a hexadecimal value)</th>
+        <td><input type="text" name="header_background_color" value="<?php echo esc_attr( get_option('header_background_color') ); ?>" /></td>
+        </tr>
+         
+        <tr valign="top">
+        <th scope="row">Footer Background Color</th>
+        <td><input type="text" name="footer_background_color" value="<?php echo esc_attr( get_option('footer_background_color') ); ?>" /></td>
+        </tr>
+        
+        <tr valign="top">
+        <th scope="row">Body Background Color</th>
+        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" /></td>
+        </tr>
+    </table>
+	<?php
+	submit_button();
+	echo '</form>';
+	echo '</div>';
+}
+
+/*Add setting values to css where applicable*/ 
+function custom_css_settings() {
+	$header_background_color = get_option('header_background_color');
+	$footer_background_color = get_option('footer_background_color');
+	$body_background_color = get_option('body_background_color');
+
+	echo "<style>
+		#branding {background: $header_background_color;}
+		#footer {background-color: $footer_background_color;}
+		body {background-color: $body_background_color;}
+	</style>";
+}
+add_action('wp_head', 'custom_css_settings');
