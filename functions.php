@@ -76,7 +76,7 @@ function fundamental_comments_number( $count )
 
 function get_left_sidebar() {
 	if ( is_active_sidebar( 'left-primary-widget-area' ) ) : ?>
-	<div id="left-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+	<div id="left-primary-sidebar" class="primary-sidebar widget-area col-md-2 col-xs-12" role="complementary">
 		<?php dynamic_sidebar( 'left-primary-widget-area' ); ?>
 	</div><!-- #left-primary-sidebar -->
 	<?php endif;
@@ -84,7 +84,7 @@ function get_left_sidebar() {
 
 function get_right_sidebar() {
 	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : ?>
-	<div id="right-primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+	<div id="right-primary-sidebar" class="primary-sidebar widget-area col-md-2 col-xs-12" role="complementary">
 		<?php dynamic_sidebar( 'right-primary-widget-area' ); ?>
 	</div><!-- #right-primary-sidebar -->
 	<?php endif; 
@@ -92,8 +92,9 @@ function get_right_sidebar() {
 
 function get_content_class() {
 	$sidebars = 0;
-	if ( is_active_sidebar( 'left-primary-widget-area' ) ) : $sidebars += 1; endif;
-	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : $sidebars += 1; endif;
+	$bootstrap_col_md = 10;
+	if ( is_active_sidebar( 'left-primary-widget-area' ) ) : $sidebars += 1; $bootstrap_col_md -= 2; endif;
+	if ( is_active_sidebar( 'right-primary-widget-area' ) ) : $sidebars += 1; $bootstrap_col_md -= 2; endif;
 	/*Return Dynamically Created Class for #content (ie sides_1, sides_2, or sides_0*/
-	return "sides_" . $sidebars;
+	return "sides_" . $sidebars . " col-md-" . $bootstrap_col_md . " col-xs-12";
 }
