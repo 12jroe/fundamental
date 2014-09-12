@@ -134,21 +134,26 @@ function my_settings_options() {
 	echo '<form method="post" action="options.php">';
 	settings_fields( 'myoption-group' );
 	do_settings_sections( 'myoption-group' );
+
+	//set up color pickers
+	wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_script( 'my-script-handle', get_template_directory_uri() . ('/color-picker.js'), array( 'wp-color-picker' ), false, true );
+
 	?>
 	<table class="form-table">
         <tr valign="top">
         <th scope="row">Header Background Color (as a hexadecimal value)</th>
-        <td><input type="text" name="header_background_color" value="<?php echo esc_attr( get_option('header_background_color') ); ?>" /></td>
+        <td><input type="text" name="header_background_color" value="<?php echo esc_attr( get_option('header_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
          
         <tr valign="top">
         <th scope="row">Footer Background Color</th>
-        <td><input type="text" name="footer_background_color" value="<?php echo esc_attr( get_option('footer_background_color') ); ?>" /></td>
+        <td><input type="text" name="footer_background_color" value="<?php echo esc_attr( get_option('footer_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
         
         <tr valign="top">
         <th scope="row">Body Background Color</th>
-        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" /></td>
+        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
     </table>
 	<?php
