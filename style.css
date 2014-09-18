@@ -38,6 +38,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	transform: translateY(50%);
 }
 
+#branding h1 img {
+	max-height: 90px;
+	margin-top: -27px;
+}
+
 #branding #site-description {
 	/*Position centered verically*/
 	margin-top: 0px;

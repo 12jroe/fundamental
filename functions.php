@@ -137,6 +137,7 @@ function register_mysettings() {
 	register_setting( 'myoption-group', 'header_background_color' );
 	register_setting( 'myoption-group', 'footer_background_color' );
 	register_setting( 'myoption-group', 'body_background_color' );
+	register_setting('myoption-group', 'uploaded_logo_image');
 }
 
 /** Display settings page */
@@ -154,6 +155,11 @@ function my_settings_options() {
 	wp_enqueue_style( 'wp-color-picker' );
     wp_enqueue_script( 'my-script-handle', get_template_directory_uri() . ('/color-picker.js'), array( 'wp-color-picker' ), false, true );
 
+    //set up file uploader
+	wp_enqueue_media();
+    wp_register_script('my-admin-js', get_template_directory_uri() . '/file-uploader-script.js', array('jquery'));
+    wp_enqueue_script('my-admin-js');
+
 	?>
 	<table class="form-table">
         <tr valign="top">
@@ -170,6 +176,17 @@ function my_settings_options() {
 	        <th scope="row">Body Background Color</th>
 	        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
+
+        <tr valign="top">
+			<th scope="row">Logo Image</th>
+			<td>
+				<label for="upload_image">
+				    <input id="upload_image_logo_image" type="text" size="36" name="uploaded_logo_image" value="<?php echo esc_attr( get_option('uploaded_logo_image') ); ?>" />
+				    <input class="upload_image_button" id = "upload_image_button_logo_image" class="button" type="button" value="Upload Image" />
+				    <br />Enter a URL or upload an image for your logo. 
+				</label>
+			</td>
+		</tr>
     </table>
 	<?php
 	submit_button();
@@ -190,3 +207,40 @@ function custom_css_settings() {
 	</style>";
 }
 add_action('wp_head', 'custom_css_settings');
+
+/*Checks if given url is an image*/
+function is_image($url) {
+	$params = array('http' => array(
+		'method' => 'HEAD'
+	));
+	
+	$ctx = stream_context_create($params);
+	$fp = @fopen($url, 'rb', false, $ctx);
+	
+	if (!$fp) {
+		return false;  // Problem with url
+
+	}
+
+	$meta = stream_get_meta_data($fp);
+	
+	if ($meta === false)
+	{
+		fclose($fp);
+		return false;  // Problem reading data from url
+	}
+
+	$wrapper_data = $meta["wrapper_data"];
+	if(is_array($wrapper_data)){
+		foreach(array_keys($wrapper_data) as $hh) {
+			if (substr($wrapper_data[$hh], 0, 19) == "Content-Type: image") // strlen("Content-Type: image") == 19 
+			{
+				fclose($fp);
+				return true;
+			}
+		}
+	}
+
+	fclose($fp);
+	return false;
+}

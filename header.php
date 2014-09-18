@@ -38,7 +38,22 @@
 		<div id = "main_area_and_top">
 			<header id="header" role="banner">
 				<section id="branding">
-					<div id="site-title"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'fundamental' ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></h1></div>
+					<div id="site-title">
+						<h1>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'fundamental' ); ?>" rel="home">
+								<?php 
+									$site_title = esc_html(get_bloginfo('name'));
+									if (is_image(get_option('uploaded_logo_image')) && $logo_image = get_option('uploaded_logo_image')) {
+										//logo exists and is an actual image. Lets display it. 
+										echo "<img src = $logo_image alt = '$site_title' /> ";
+									} else {
+										echo $site_title;
+									}
+									 
+								?>
+							</a>
+						</h1>
+					</div>
 					<div id="site-description"><?php bloginfo( 'description' ); ?></div>
 				</section>
 				<nav id="menu" role="navigation" class="navbar navbar-default">
