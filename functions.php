@@ -1,5 +1,7 @@
 <?php
+
 add_action( 'after_setup_theme', 'fundamental_setup' );
+
 function fundamental_setup()
 {
 	load_theme_textdomain( 'fundamental', get_template_directory() . '/languages' );
@@ -11,17 +13,23 @@ function fundamental_setup()
 		array( 'main-menu' => __( 'Main Menu', 'fundamental' ) )
 		);
 }
+
 add_action( 'wp_enqueue_scripts', 'fundamental_load_scripts' );
+
 function fundamental_load_scripts()
 {
 	wp_enqueue_script( 'jquery' );
 }
+
 add_action( 'comment_form_before', 'fundamental_enqueue_comment_reply_script' );
+
 function fundamental_enqueue_comment_reply_script()
 {
 	if ( get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' ); }
 }
+
 add_filter( 'the_title', 'fundamental_title' );
+
 function fundamental_title( $title ) {
 	if ( $title == '' ) {
 		return '&rarr;';
@@ -29,12 +37,16 @@ function fundamental_title( $title ) {
 		return $title;
 	}
 }
+
 add_filter( 'wp_title', 'fundamental_filter_wp_title' );
+
 function fundamental_filter_wp_title( $title )
 {
 	return $title . esc_attr( get_bloginfo( 'name' ) );
 }
+
 add_action( 'widgets_init', 'fundamental_widgets_init' );
+
 function fundamental_widgets_init()
 {
 	register_sidebar( array (
@@ -55,6 +67,7 @@ function fundamental_widgets_init()
 		'after_title' => '</h3>',
 		) );
 }
+
 function fundamental_custom_pings( $comment )
 {
 	$GLOBALS['comment'] = $comment;
@@ -62,7 +75,9 @@ function fundamental_custom_pings( $comment )
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo comment_author_link(); ?></li>
 	<?php 
 }
+
 add_filter( 'get_comments_number', 'fundamental_comments_number' );
+
 function fundamental_comments_number( $count )
 {
 	if ( !is_admin() ) {
@@ -142,18 +157,18 @@ function my_settings_options() {
 	?>
 	<table class="form-table">
         <tr valign="top">
-        <th scope="row">Header Background Color (as a hexadecimal value)</th>
-        <td><input type="text" name="header_background_color" value="<?php echo esc_attr( get_option('header_background_color') ); ?>" class="fundamental-color-field"/></td>
+	        <th scope="row">Header Background Color (as a hexadecimal value)</th>
+	        <td><input type="text" name="header_background_color" value="<?php echo esc_attr( get_option('header_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
          
         <tr valign="top">
-        <th scope="row">Footer Background Color</th>
-        <td><input type="text" name="footer_background_color" value="<?php echo esc_attr( get_option('footer_background_color') ); ?>" class="fundamental-color-field"/></td>
+	        <th scope="row">Footer Background Color</th>
+	        <td><input type="text" name="footer_background_color" value="<?php echo esc_attr( get_option('footer_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
         
         <tr valign="top">
-        <th scope="row">Body Background Color</th>
-        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" class="fundamental-color-field"/></td>
+	        <th scope="row">Body Background Color</th>
+	        <td><input type="text" name="body_background_color" value="<?php echo esc_attr( get_option('body_background_color') ); ?>" class="fundamental-color-field"/></td>
         </tr>
     </table>
 	<?php
